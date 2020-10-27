@@ -1,7 +1,6 @@
 (in-package :cl-user)
 (defpackage jonathan.helper
   (:use :cl
-        :annot.doc
         :jonathan.error
         :jonathan.util
         :jonathan.encode)
@@ -27,13 +26,10 @@
            :compile-encoder))
 (in-package :jonathan.helper)
 
-(syntax:use-syntax :annot)
-
 (defvar *compile-encoder-prefix* "jonathan-encoder")
 
-@doc
-"Output *stream* as string."
 (defmacro with-output-to-string* (&body body)
+  "Output *stream* as string."
   `(with-output-to-string (stream)
      (with-output (stream)
        ,@body)))
@@ -124,9 +120,8 @@
                              (t (swap object (genstr)))))))))
         (values (sub form) placeholders)))))
 
-@doc
-"Compile encoder."
 (defmacro compile-encoder ((&key octets from return-form) (&rest args) &body body)
+  "Compile encoder."
   (check-args args)
   (let* ((main (last-elt body))
          (progn-p (and (consp main)

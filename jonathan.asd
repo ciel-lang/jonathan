@@ -7,9 +7,7 @@
   :version "0.1"
   :author "Rudolph-Miller"
   :license "MIT"
-  :depends-on (:cl-syntax
-               :cl-syntax-annot
-               :fast-io
+  :depends-on (:fast-io
                :trivial-types
                :babel
                :proc-parse
